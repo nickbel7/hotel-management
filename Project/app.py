@@ -1,12 +1,30 @@
-from flask import Flask
+from flask import Flask, render_template, request
+import pypyodbc
 from datetime import datetime
 import re
 
 app = Flask(__name__)
 
+sql_user = 'sa'
+sql_password = '2019'
+sql_server_name = 'BELLOS-DELL-G3\SQL2019'
+sql_database_name = 'HotelManagement'
+connection = pypyodbc.connect('Driver={SQL Server};Server='+sql_server_name+';Database='+sql_database_name+';uid='+sql_user+';pwd='+sql_password)
+
+rs = connection.cursor()    
+rs.execute("SELECT * FROM Customers")
+s = "<ul style='border:1px solid red'>"    
+for row in rs:    
+    s = s + "<li>"    
+    for x in row:    
+        s = s + str(x) + " "    
+    s = s + "</li>"
+s = s + "</ul>"
+connection.close() 
+
 @app.route("/")
 def home():
-    return "Hello, Flask1!"
+    return "<html><body>" + s + "</body></html>" 
 
 @app.route("/hello/<name>")
 def hello_there(name):
