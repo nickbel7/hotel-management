@@ -16,14 +16,15 @@ INNER JOIN ReservationCustomers ON ReservationCustomers.ReservationCustomer_ID =
 INNER JOIN Doors ON Doors.Door_ID = DoorAccessLog.Door_ID
 LEFT JOIN HotelLocations ON Doors.HotelLocation_ID = HotelLocations.HotelLocation_ID
 INNER JOIN HotelServices ON HotelLocations.HotelService_ID = HotelServices.HotelService_ID
-WHERE Type_of_access = 'Entry' 
-AND HotelService_name = 'Bar' 
-AND Access_time BETWEEN getdate() - 10 AND getdate() + 10
-AND Price BETWEEN 10 AND 30
+WHERE HotelService_name = 'Bar' 
+AND Entry_time >= getdate() - 10 
+AND Entry_time <= getdate() + 10
+AND Price >= 10 
+AND Price <= 30
 
 SELECT DISTINCT
 First_name + ' ' + Last_name as Full_name,
-Access_time as Time_of_access,
+Entry_time as Time_of_entry,
 Location_name
 FROM DoorAccessLog
 INNER JOIN ReservationCustomers ON ReservationCustomers.ReservationCustomer_ID = DoorAccessLog.ReservationCustomer_ID
@@ -31,7 +32,7 @@ INNER JOIN Customers ON ReservationCustomers.Customer_ID = Customers.Customer_ID
 INNER JOIN Doors ON Doors.Door_ID = DoorAccessLog.Door_ID
 LEFT JOIN HotelLocations ON Doors.HotelLocation_ID = HotelLocations.HotelLocation_ID
 INNER JOIN HotelServices ON HotelLocations.HotelService_ID = HotelServices.HotelService_ID
-WHERE Type_of_access = 'Entry' AND Location_name = 'Bar 1'
+WHERE Location_name = 'Bar 1'
 
 /* =====================
 		QUERY 8
@@ -40,18 +41,19 @@ set statistics time on
 
 --CREATE VIEW services_visits AS
 SELECT DISTINCT
+HotelService_name,
+Location_name,
 First_name + ' ' + Last_name as Full_name,
 Price,
-Access_time as Time_of_access,
-Location_name
+Entry_time as Time_of_entry,
+Exit_time as Time_of_exit
 FROM DoorAccessLog
 INNER JOIN ReservationCustomers ON ReservationCustomers.ReservationCustomer_ID = DoorAccessLog.ReservationCustomer_ID
 INNER JOIN Customers ON ReservationCustomers.Customer_ID = Customers.Customer_ID
 INNER JOIN Doors ON Doors.Door_ID = DoorAccessLog.Door_ID
 LEFT JOIN HotelLocations ON Doors.HotelLocation_ID = HotelLocations.HotelLocation_ID
-INNER JOIN HotelServices ON HotelLocations.HotelService_ID = HotelServices.HotelService_ID
-WHERE Type_of_access = 'Entry' 
-AND HotelService_name = 'Bar' 
+INNER JOIN HotelServices ON HotelLocations.HotelService_ID = HotelServices.HotelService_ID 
+ORDER BY HotelService_name
 
 set statistics time off
 

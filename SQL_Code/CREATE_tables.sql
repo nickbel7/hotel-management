@@ -110,8 +110,8 @@ BEGIN
 CREATE TABLE DoorAccessLog
 (
 	DoorAccessLog_ID int IDENTITY(1,1) PRIMARY KEY,
-	Access_time datetime, 
-	Type_of_access varchar (50),
+	Entry_time datetime,
+	Exit_time datetime,
 	Service_desc varchar (255),
 	ReservationCustomer_ID int FOREIGN KEY REFERENCES ReservationCustomers(ReservationCustomer_ID),
 	Door_ID int FOREIGN KEY REFERENCES Doors(Door_ID)
