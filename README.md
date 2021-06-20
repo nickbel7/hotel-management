@@ -21,19 +21,14 @@ This is a project for the Databases class in NTUA Electrical and Computer Engine
 ![](https://github.com/nickbel7/hotel-management/blob/main/Diagrams(ERD%2CRelational)/RelationalDiagram.png?raw=true)
 
 ## Installation
+1. At first, make sure you have installed sql server 2019 (express) on your computer.
+2. Then, connect to the server throught a DBMS (preferably Microsoft SQL Management Studio) with sa (system administrator) credentials.
 
-1. At first, initialize a mysql database at either a [localhost](https://dev.mysql.com/doc/mysql-getting-started/en/) or a [server](https://aws.amazon.com/rds/)
-2. Then, run the folowing command in terminal, using your credentials in order to connect in mysql host:
+### Run the following sql queries inside the DMBS (at this spesific order !).
 
-```bash
-	 $ mysql -h "server-name" -u "your_username" -p "your_password"
-```
-
-### Run the following inside mysql command prompt, strictly at this order,
-
-3. [AlexJohnChris.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/AlexJohnChris.sql) to create the database.
-4. [indexes.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/Indexes/indexes.sql) to create the indexes.
-5. [view1.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/views/view1.sql) and [view2.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/views/view2.sql) to create the views.
+3. [CREATE_tables.sql](SQL_Code/CREATE_tables.sql) to create the database and the tables.
+4. [CREATE_indexes.sql](SQL_Code/CREATE_indexes.sql) to create the indexes.
+5. [CREATE_views_1.sql](SQL_Code/CREATE_views_1.sql) and [CREATE_views_2.sql](SQL_Code/CREATE_views_2.sql) to create the required views.
 6. [past_price_trigger.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/trigers/past_price_trigger.sql) to create the trigger for auto-update past prices.
 7. [addStores.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/addStores/addStores.sql) to add all the stores.
 
