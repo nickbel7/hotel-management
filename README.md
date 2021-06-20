@@ -1,6 +1,12 @@
 # Hotel-Management
 This is a project for the Databases class in NTUA Electrical and Computer Engineering Department 
 
+## Contributors
+Listed alphabetically:
+1. Elina Syrri ([ElinaSyr](https://github.com/ElinaSyr))
+1. George Papadoulis ([G-Papad](https://github.com/G-Papad))
+1. Nick Bellos ([nickbel7](https://github.com/nickbel7))
+
 ## Tools used
 ![Python](https://img.shields.io/badge/python-v3.7+-red.svg)
 ![Dependencies](https://img.shields.io/badge/flask-v2.0.1-red)
@@ -29,66 +35,62 @@ This is a project for the Databases class in NTUA Electrical and Computer Engine
 3. [CREATE_tables.sql](SQL_Code/CREATE_tables.sql) to create the database and the tables.
 4. [CREATE_indexes.sql](SQL_Code/CREATE_indexes.sql) to create the indexes.
 5. [CREATE_views_1.sql](SQL_Code/CREATE_views_1.sql) and [CREATE_views_2.sql](SQL_Code/CREATE_views_2.sql) to create the required views.
-6. [past_price_trigger.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/trigers/past_price_trigger.sql) to create the trigger for auto-update past prices.
-7. [addStores.sql](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/sql/addStores/addStores.sql) to add all the stores.
 
-### Back in the terminal
+### Insert Mock Data in the database
 
-8. Run,
-
+6. Insert Data from the excel [HotelManagement-Data.xlsx](Mock_Data/HotelManagement_V2.xlsx) throught the Import / Export wizard of Microsoft Management Studio <br />
+##### (Attention !) - Insert the data table by table with strictly the following order and by enabling the identity insert in the "Edit mappings" option for each table.
+	Reservations
+	Reservations
+	HotelServices
+	HotelLocations
+	Doors
+	HotelRooms
+	ReservationCustomers
+	ReservationServices
+	ReservationRooms
+	DoorAccessLog
+OR <br />
+Directly insert the Backup (.bak file) of the database with all the data located here [HotelManagement.bak](DB-Backup/HotelManagement_V2.bak)
 ```bash
-	$ git clone https://github.com/AlexandrosKyriakakis/DataBase.git
-	$ cd DataBase
-	$ git clone https://github.com/AlexandrosKyriakakis/MarketDataset.git
+	Databases (Right-click) > Restore Database..
 ```
 
-9. Add your database credentials at the top '\*\*\*\*' of each of the following files,
-   - [addCustomersAndPhone.py](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/addData/addCustomersAndPhone.py)
-   - [addProductsPastPricesHas.py](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/addData/addProductsPastPricesHas.py)
-   - [addTransactionsBought.py](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/addData/addTransactionsBought.py)
-   - [server_guest.py](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/server_guest.py)
-10. Run the following strictly at this order,
+### Download and run the web-app 
+7. Run,
 
 ```bash
-	$ pip3 install -r requirements.txt
-	$ python3 ./addData/addCustomersAndPhone.py
-	$ python3 ./addData/addProductsPastPricesHas.py
-	$ python3 ./addData/addTransactionsBought.py
+	$ git clone https://github.com/nickbel7/hotel-management.git
+	$ cd hotel-management
 ```
 
-11. Now, that the database is full with random generated data, start the back-end server to finish the installation,
+9. Add your database credentials (preferably use sa user to have all privileges) at the top of the [app.py](Project/app.py) file,
+```bash
+	ql_user = '**'
+	sql_password = '****'
+	sql_server_name = '*******'
+	sql_database_name = 'HotelManagement'
+```
+10. Run the following script to download all required libraries,
 
 ```bash
-	$ python3 server_guest.py
+	$ pip install -r requirements.txt
 ```
 
-12. Open your favorite browser and type <http://localhost:8587/> to preview the website.
+11. Run the following script to enter the Project folder and start the web-server,
 
-## Sql Queries
+```bash
+	$ cd Project
+	$ python -m flask run
+```
 
-Queries to construct database,
+12. Open your browser and type <http://127.0.0.1:5000/> to preview the website.
 
-- [AlexJohnChris](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql)
-- [Indexes](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/Indexes)
-- [Trigers](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/trigers)
-- [Add Stores](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/addStores)
+## SQL Queries
 
-Here we show all the [queries](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql) used in the site at each page,
+Here we show all the [Queries](SQL_Code/PROJECT_QUERIES.sql) used in the site at each page.
+Find the questions for the queries attached to the file [Εκφωνήσεις](Docs/Εκφώνηση.pdf)
 
-- [SearchPerCondition](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/SearchPerCondition) for page [/search](https://damp-thicket-93938.herokuapp.com/search)
-- [CustomerData](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/CustomerData) for pages [/customers_visit_data](https://damp-thicket-93938.herokuapp.com/customers_visit_data) and [/customers](https://damp-thicket-93938.herokuapp.com/customers)
-- [ProductData](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/ProductData) for pages at [Product Data](https://damp-thicket-93938.herokuapp.com)
-- [Views](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/views) for pages [/customer_info](https://damp-thicket-93938.herokuapp.com/customer_info) and [/sales_category_store](https://damp-thicket-93938.herokuapp.com/sales_category_store)
-- [EditData](https://github.com/AlexandrosKyriakakis/DataBase/tree/master/sql/EditData) for pages at [Edit Data](https://damp-thicket-93938.herokuapp.com)
-
-## Authors
-
-- [Alexandros Kyriakakis](https://github.com/AlexandrosKyriakakis)
-- [Ioannis Alexopoulos](https://github.com/galexo)
 ## YouTube
-Explaining in Greek language how to use our Site.<br />
+Explaining in Greek language how to use our wep application and what queries are used in each page.<br />
 <https://www.youtube.com/watch?v=YaeIKbiKvYA&feature=youtu.be>
-
-## Licence
-
-This project uses [MIT license](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/LICENCE)
