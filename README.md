@@ -27,7 +27,7 @@ Listed alphabetically:
 ![](https://github.com/nickbel7/hotel-management/blob/main/Diagrams(ERD%2CRelational)/RelationalDiagram.png?raw=true)
 
 ## Installation
-1. At first, make sure you have installed sql server 2019 (express) on your computer.
+1. At first, make sure you have installed sql server 2019 (express) on your computer. [Download page](https://www.microsoft.com/en-us/download/details.aspx?id=101064)
 2. Then, connect to the server throught a DBMS (preferably Microsoft SQL Management Studio) with sa (system administrator) credentials.
 
 ### Run the following sql queries inside the DMBS (at this spesific order !).
