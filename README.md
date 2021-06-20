@@ -1,25 +1,16 @@
 # Hotel-Management
 This is a project for the Databases class in NTUA Electrical and Computer Engineering Department 
 
-# Database Project
+## Tools used
 ![Python](https://img.shields.io/badge/python-v3.7+-red.svg)
 ![Dependencies](https://img.shields.io/badge/flask-v2.0.1-red)
-![pypyodbc](https://img.shields.io/badge/pypyodbc-v1.3.4-blue.svg)
-[![Build Status](https://img.shields.io/badge/mssql-v2019+-red.svg)](https://img.shields.io/badge/mysql_connector-v2.2.9-blue.svg)
-[![GitHub Issues](https://img.shields.io/badge/numpy-v1.17.4-green.svg)](https://img.shields.io/badge/pandas-v0.25.3-yellow.svg)
-(https://opensource.org/licenses/MIT)(https://opensource.org/licenses/MIT)
-
-## Overview
-
-[Serious Company](https://damp-thicket-93938.herokuapp.com/) is a website built from scratch for an academic project on lesson NTUA-DATABASES at Nation Technical University of Athens. The website contains random data simulating market database.
+![pypyodbc](https://img.shields.io/badge/pypyodbc-v1.3.4-red.svg)
+[![Build Status](https://img.shields.io/badge/sql-server-v2019+-yellow.svg)
 
 ## [Requirements](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/requirements.txt)
-
-- mysql 8.0.19
-- flask 1.1.2
-- mysql_connector 2.2.9
-- numpy 1.17.4
-- pandas 0.25.3
+- sql server 2019
+- Flask 2.0.1
+- pypyodbc 1.3.4
 
 ## ER-Diagram
 
@@ -27,7 +18,7 @@ This is a project for the Databases class in NTUA Electrical and Computer Engine
 
 ## Relational Model
 
-![](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/img/relationalModel.png?raw=true)
+![](https://github.com/nickbel7/hotel-management/blob/main/Diagrams(ERD%2CRelational)/RelationalDiagram.png?raw=true)
 
 ## Installation
 
