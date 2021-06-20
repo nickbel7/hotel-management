@@ -5,7 +5,7 @@ This is a project for the Databases class in NTUA Electrical and Computer Engine
 ![Python](https://img.shields.io/badge/python-v3.7+-red.svg)
 ![Dependencies](https://img.shields.io/badge/flask-v2.0.1-red)
 ![pypyodbc](https://img.shields.io/badge/pypyodbc-v1.3.4-red.svg)
-![sqlserver](https://img.shields.io/badge/sql-server-v2019-yellow.svg)
+![sqlserver](https://img.shields.io/badge/sql_server-v2019-yellow.svg)
 
 ## [Requirements](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/requirements.txt)
 - sql server 2019
