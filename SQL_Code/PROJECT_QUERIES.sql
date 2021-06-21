@@ -35,45 +35,6 @@ INNER JOIN HotelServices ON HotelLocations.HotelService_ID = HotelServices.Hotel
 WHERE Location_name = 'Bar 1'
 
 /* =====================
-		QUERY 8
-======================*/
-set statistics time on
-
---CREATE VIEW services_visits AS
-SELECT DISTINCT
-HotelService_name,
-Location_name,
-First_name + ' ' + Last_name as Full_name,
-Price,
-Entry_time as Time_of_entry,
-Exit_time as Time_of_exit
-FROM DoorAccessLog
-INNER JOIN ReservationCustomers ON ReservationCustomers.ReservationCustomer_ID = DoorAccessLog.ReservationCustomer_ID
-INNER JOIN Customers ON ReservationCustomers.Customer_ID = Customers.Customer_ID
-INNER JOIN Doors ON Doors.Door_ID = DoorAccessLog.Door_ID
-LEFT JOIN HotelLocations ON Doors.HotelLocation_ID = HotelLocations.HotelLocation_ID
-INNER JOIN HotelServices ON HotelLocations.HotelService_ID = HotelServices.HotelService_ID 
-ORDER BY HotelService_name
-
-set statistics time off
-
-set statistics time on
-
---CREATE VIEW customer_info AS 
-SELECT DISTINCT 
-First_name + ' ' + Last_name as Full_name,
-datediff( YY, Customers.Birth_date, getdate()) as Age,
-Issuing_authority, 
-Email,
-Phone
-FROM ReservationCustomers
-INNER JOIN Customers ON ReservationCustomers.Customer_ID = Customers.Customer_ID
-INNER JOIN Reservations ON ReservationCustomers.Reservation_ID = Reservations.Reservation_ID
-WHERE GETDATE() BETWEEN Arrival AND Departure
-
-set statistics time off
-
-/* =====================
 		QUERY 9
 ======================*/
 

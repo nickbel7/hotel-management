@@ -1,3 +1,7 @@
+/* =====================
+		QUERY 8
+======================*/
+
 CREATE VIEW customer_info AS 
 SELECT DISTINCT 
 First_name + ' ' + Last_name as Full_name,

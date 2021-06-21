@@ -1,3 +1,7 @@
+/* =====================
+		QUERY 8
+======================*/
+
 CREATE VIEW services_visits AS
 SELECT DISTINCT
 HotelService_name,
