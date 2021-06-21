@@ -20,11 +20,12 @@ Listed alphabetically:
 
 ## ER-Diagram
 
-![](https://github.com/AlexandrosKyriakakis/DataBase/blob/master/img/er-diagram.png?raw=true)
+![](https://github.com/nickbel7/hotel-management/blob/main/Diagrams(ERD%2CRelational)/ERD.jpg)
 
 ## Relational Model
 
 ![](https://github.com/nickbel7/hotel-management/blob/main/Diagrams(ERD%2CRelational)/RelationalDiagram.png?raw=true)
+![](https://github.com/nickbel7/hotel-management/blob/main/Diagrams(ERD%2CRelational)/RelationalDiagram.jpg)
 
 ## Installation
 1. At first, make sure you have installed sql server 2019 (express) on your computer. [Download page](https://www.microsoft.com/en-us/download/details.aspx?id=101064)
