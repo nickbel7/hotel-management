@@ -90,6 +90,26 @@ ORDER BY DoorAccessLog.Access_time
 
 set statistics time off
 
+/* =====================
+		QUERY 10
+======================*/
+
+set statistics time on 
+
+SELECT DISTINCT ReservationCustomers.NFC_code, Customers.First_name, Customers.Last_name, Customers.Issuing_authority, Customers.Email, Customers.Phone
+FROM
+(SELECT DoorAccessLog.ReservationCustomer_ID, DoorAccessLog.Door_ID, Entry_time, Exit_time
+FROM DoorAccessLog inner join ReservationCustomers on ReservationCustomers.ReservationCustomer_ID = DoorAccessLog.ReservationCustomer_ID
+inner join Customers on Customers.Customer_ID = ReservationCustomers.Customer_ID
+WHERE ReservationCustomers.NFC_code = 9297324) AS Covid
+INNER JOIN DoorAccessLog ON DoorAccessLog.Door_ID = Covid.Door_ID
+inner join ReservationCustomers on ReservationCustomers.ReservationCustomer_ID = DoorAccessLog.ReservationCustomer_ID
+inner join Customers on Customers.Customer_ID = ReservationCustomers.Customer_ID
+WHERE (DoorAccessLog.Entry_time > Covid.Entry_time AND DoorAccessLog.Entry_time <= DATEADD(HOUR, 1,Covid.Exit_time))
+OR (Covid.Entry_time > DoorAccessLog.Entry_time AND Covid.Entry_time < DoorAccessLog.Exit_time)
+
+
+set statistics time off
 
 /* =====================
 		QUERY 11
