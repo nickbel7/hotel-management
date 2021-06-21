@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="purchases-container">
+<h3>Service Purchases</h3>
+{% for purchase in purchases %}
+    {% if purchase.get('items') %}
+    <div class="purchases-card col-5">
+    <h5>{{ purchase.get('title') }}</h5>
+    <ul>
+        {% for item in purchase.get('items') %}
+        <li>
+            <span>{{ item.location_name }}</span>
+            <span>{{ item.full_name }}</span>
+            <span>{{ item.price }} €</span>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}

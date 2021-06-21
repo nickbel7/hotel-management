@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="customer-form-container">
+    <h3>Edit Customer</h3>
+    <form class = "form" method ='POST' action= "{{ url_for('customer_edit') }}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFirstName">First Name</label>
+                <input type="text" class="form-control" name="inputFirstName" value="{% if current_customer %}{{ current_customer[0].first_name }}{% endif %}" placeholder="First Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLastName">Last Name</label>
+                <input type="text" class="form-control" name="inputLastName" value="{% if current_customer %}{{ current_customer[0].last_name }}{% endif %}" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputBirthDate">Birth date</label>
+            <input type="date" class="form-control" name="inputBirthDate" value="{{ birth_date }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmailAddress">Email Address</label>
+            <input type="email" class="form-control" name="inputEmailAddress" value="{% if current_customer %}{{ current_customer[0].email }}{% endif %}" placeholder="ex. example@gmail.com">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputIssuingAuthority">Issuing Authority</label>
+                <input type="text" class="form-control" value="{% if current_customer %}{{ current_customer[0].issuing_authority }}{% endif %}" name="inputIssuingAuthority" placeholder="ex. 279-58-4707">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPhoneNumber">Phone Number</label>
+                <input type="tel" class="form-control" value="{% if current_customer %}{{ current_customer[0].phone }}{% endif %}" name="inputPhoneNumber" placeholder="ex. 3171695467">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default btn-light my-4">Save</button>
+    </form>
+
+    <button type="button" class="btn btn-secondary btn-light my-4" onclick="window.location.href='/customers'">Back</button>
+</div>
+{% endblock %}

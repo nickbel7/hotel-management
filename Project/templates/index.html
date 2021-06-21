@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="customers-card">
+    <h3>Hotel Customers</h3>
+    <table class="table table-sm table-dark">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Age</td>
+          <td>ID</td>
+          <td>Email</td>
+          <td>Phone</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.full_name }}</td>
+          <td>{{ customer.age }}</td>
+          <td>{{ customer.issuing_authority }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.phone }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  <form class="form-inline" method="POST" action="{{ url_for('home') }}">
+    <select class="mr-sm-2" type="text" name="select-service-type" autocomplete=true onchange="this.form.submit()">
+      {% for serviceType in serviceTypes %}
+      <option value="{{ serviceType[0] }}" {% if selected_service_type == serviceType[0] %} selected {% endif %}>{{ serviceType[0] }}</option>
+      {% endfor %}
+    </select>
+    <div class="input-group mb-3">
+      <span class="input-group-text">(€) Min :</span>
+      <input type="text" class="form-control" name="min-price" value="0">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">(€) Max :</span>
+      <input type="text" class="form-control" name="max-price">
+    </div>
+
+    <input type="datetime-local" id="meeting-time"
+      name="min-time" value="2021-01-01T00:00">
+      <input type="datetime-local" id="meeting-time"
+      name="max-time" value="2022-01-01T00:00">
+
+    <button type="submit" class="btn btn-default btn-light">Go</button>
+  
+    <select multiple class="mr-sm-2" type="text" name="select-service" autocomplete=true onchange="this.form.submit()">
+      {% for visitedService in visitedServices %}
+      <option value="{{ visitedService[0] }}" {% if selected_service == visitedService[0] %} selected {% endif %}>{{ visitedService[0] }}</option>
+      {% endfor %}
+    </select>
+  </form>
+  <ul>
+    {% for visit in visits %}
+    <li>{{ visit.full_name }} {{ visit.time_of_entry }}</li>
+    {% endfor %}
+  </ul>
+
+  {% for purchase in purchases %}
+  <h5>{{ purchase.get('title') }}</h5>
+  <ul>
+    {% for item in purchase.get('items') %}
+    <li>{{ item.location_name }} {{ item.full_name }} {{ item.price }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="customers-card">
+    <h3>Hotel Customers</h3>
+    <table class="table table-sm table-borderless">
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td>ID</td>
+            <td>Email</td>
+            <td>Phone</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+        <tr class="customer-row">
+            <td>{{ customer.full_name }}</td>
+            <td>{{ customer.age }}</td>
+            <td>{{ customer.issuing_authority }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Hotel Management</title>
+    <meta charset="utf-8">
+    <!-- DEPENDENCIES -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/nav.css" />
+    <!-- <link rel = "stylesheet" type = "text/css" href = "../static/css/dashboard.css"> -->
+    <!-- <link href="/assets/css/material-dashboard.min.css?v=2.1.2" rel="stylesheet" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../static/js/main.js"></script>
+  </head>
+  <body>
+    <img id="backdrop-img" src="./../static/images/background-3.jpg" alt="">
+    <div id="backdrop-blur"></div>
+    <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger"></div>
+      <header class="avatar">
+        <img src="./../static/images/logo.jpg"/>
+        <h5>LA PLAGIA HOTEL</h5>
+      </header>
+        <ul>
+        <a href="/">
+            <li tabindex="0" class="icon-dashboard"><span>Dashboard</span></li>
+        </a>
+        <a href="/purchases">
+        <li tabindex="0" class="icon-customers"><span>Purchases</span></li>
+        </a>
+        <a href="/customers">
+        <li tabindex="0" class="icon-users"><span>Customers</span></li>
+        </a>
+        <a href="/accesses">
+        <li tabindex="0" class="icon-settings"><span>Accesses</span></li>
+        </a>
+        <a href="/covid">
+            <li tabindex="0" class="icon-virus"><span>Covid accesses</span></li>
+        </a>
+        <a href="/reservation">
+            <li tabindex="0" class="icon-book"><span>Make reservation</span></li>
+        </a>
+      </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+  </body>
+</html>

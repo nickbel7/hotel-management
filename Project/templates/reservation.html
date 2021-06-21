@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="reservation-container">
+    <form class="p-2" class="form" method='POST' action= "{{ url_for('reservation') }}">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name </label>
+            <input type="text" class="form-control" name="inputFirstName" placeholder="First Name">
+            
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" name="inputLastName" placeholder="Last Name">
+        </div>
+        </div>
+        <div class="form-group col-md-6">
+        <label for="inputBirthDate">Birth date</label>
+        <input type="date" class="form-control" name="inputBirthDate" placeholder="Birth date">
+        </div>
+        <div class="form-group col-md-6">
+        <label for="inputEmailAddress">Email Address </label>
+        <input type="email" class="form-control" name="inputEmailAddress" placeholder="Email">
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputIssuingAuthority">Issuing Authority</label>
+            <input type="text" class="form-control" name="inputIssuingAuthority">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPhoneNumber">Phone Number</label>
+            <input type="tel" class="form-control" name="inputPhoneNumber">
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputArrivalDate">Arrival</label>
+                <input type="date" class="form-control" name="inputArrivalDate" placeholder="Arrival date">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputDeprartureDate">Deprarture</label>
+                <input type="date" class="form-control" name="inputDeprartureDate" placeholder="Deprarture date">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 my-3">
+                <select class="custom-select" required name='inputNumberOfPerson'>
+                    <option value="">Choose Number of Persons</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+            <select class="custom-select" required name = "inputPaymentMethod">
+                <option value="">Choose Payment Method</option>
+                <option value="Cash">Cash</option>
+                <option value="Debit card">Debit card</option>
+                <option value="Credit card">Credit Card</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <select class="custom-select" required name = "inputNumberOfBeds">
+                <option value="">Choose Number of Beds</option>
+                <option name = "TwoBeds" value="2">Two</option>
+                <option name = "ThreeBeds" value="3">Three</option>
+                <option name = "FourBeds" value="4" >Four</option>
+                <option name = "FiveBeds" value="5">Five</option>
+            </select>
+        </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check form-check-inline">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="Sauna" value="5">
+                <label class="form-check-label" for="inlineCheckbox3">Sauna</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="Gym" value="4">
+                <label class="form-check-label" for="inlineCheckbox2">Gym</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="WorkRoom" value="3">
+                <label class="form-check-label" for="inlineCheckbox2">Work Room</label>
+            </div>
+        </div>
+        <div class="form-group my-4">
+            <button type="submit" class="btn btn-primary"> Register Customer </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

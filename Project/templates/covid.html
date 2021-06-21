@@ -1,0 +1,67 @@
+{%extends "base.html" %}
+{% block content %}
+<div id="covid-container">
+    <form class = "form-inline" method = "POST" action = "{{ url_for('covid') }}"> 
+        <h4>Search by NFC</h4>
+        <select type="text" name='select-nfc-code'>
+            <option value="none" selected disabled hidden> NFC Code </option> 
+            {% for nfc in nfcs %}
+            <option value = "{{nfc[0]}}"> {{nfc[0]}} </option>
+            {% endfor %} 
+        </select>
+        <button type="submit" class="btn btn-default btn-light"> Search </button>
+    </form>
+    <div class="covid-card">
+        <h3>Covid patient visits</h3>
+        <table class = "table item_1 table-sm table-borderless">
+        <thead>
+            <tr> 
+                <th> Door Name</th>
+                <th> Entry time</th>
+                <th> Exit time</th>
+            </tr>
+        </thead> 
+        <tbody>
+            {% for covid_cust in covid_custs %}
+            <tr> 
+                <td> {{covid_cust[0]}}</td>
+                <td> {{covid_cust[2]}}</td>
+                <td> {{covid_cust[3]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Covid suspects -->
+<div id="covid-suspects-container">
+    <div class="covid-card">
+        <h3>Covid Suspects</h3>
+        <table class="table table-sm table-borderless">
+            <thead>
+                <tr>
+                <td>NFC_code</td>
+                <td>First_name</td>
+                <td>Last_name</td>
+                <td>Issuing_authority</td>
+                <td>Email</td>
+                <td>Phone</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sus in suspects %}
+                <tr>
+                    <td>{{ sus[0] }}</td>
+                    <td>{{ sus[1] }}</td>
+                    <td>{{ sus[2] }}</td>
+                    <td>{{ sus[3] }}</td>
+                    <td>{{ sus[4] }}</td>
+                    <td>{{ sus[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} 

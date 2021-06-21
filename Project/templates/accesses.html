@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="accesses-container">
+    <h3>Service Accesses</h3>
+    <form class="form-inline" method="POST" action="{{ url_for('accesses_view') }}">
+        <select class="form-field mr-sm-2" type="text" name="select-service-type" autocomplete=true>
+        {% for serviceType in serviceTypes %}
+        <option value="{{ serviceType[0] }}" {% if selected_service_type == serviceType[0] %} selected {% endif %}>{{ serviceType[0] }}</option>
+        {% endfor %}
+        </select>
+        <div class="form-field input-group mb-3">
+            <span class="input-group-text">(€) Min :</span>
+            <input type="text" class="form-control" name="min-price" value="0">
+        </div>
+        <div class="form-field input-group mb-3">
+            <span class="input-group-text">(€) Max :</span>
+            <input type="text" class="form-control" name="max-price">
+        </div>
+
+        <input class="form-field" type="datetime-local" id="meeting-time"
+        name="min-time" value="2021-01-01T00:00">
+        <input class="form-field" type="datetime-local" id="meeting-time"
+        name="max-time" value="2022-01-01T00:00">
+        
+        <button type="submit" class="btn btn-default btn-light">Go</button>
+
+        <select id="services-list" multiple class="mr-sm-2" type="text" name="select-service" autocomplete=true onchange="this.form.submit()">
+        {% for visitedService in visitedServices %}
+        <option value="{{ visitedService[0] }}" {% if selected_service == visitedService[0] %} selected {% endif %}>{{ visitedService[0] }}</option>
+        {% endfor %}
+        </select>
+    </form>
+    <ul>
+        {% for visit in visits %}
+        <li>
+            <span>{{ visit.full_name }}</span> 
+            <span>{{ visit.time_of_entry }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
