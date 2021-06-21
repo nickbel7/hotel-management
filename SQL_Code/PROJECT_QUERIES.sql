@@ -76,17 +76,17 @@ set statistics time off
 /* =====================
 		QUERY 9
 ======================*/
+
 set statistics time on
 
-SELECT 
-Doors.Door_name, NFC_code, DoorAccessLog.Access_time AS Entry_time, Type_of_access
+SELECT Doors.Door_name, NFC_code, DoorAccessLog.Entry_time, DoorAccessLog.Exit_time
 FROM DoorAccessLog
 INNER JOIN ReservationCustomers ON ReservationCustomers.ReservationCustomer_ID = DoorAccessLog.ReservationCustomer_ID
 INNER JOIN Doors ON Doors.Door_ID = DoorAccessLog.Door_ID
 LEFT JOIN HotelLocations ON Doors.HotelLocation_ID = HotelLocations.HotelLocation_ID
 LEFT JOIN HotelRooms ON Doors.Door_ID = HotelRooms.Door_ID
-WHERE ReservationCustomers.NFC_code = 1435768
-ORDER BY DoorAccessLog.Access_time
+WHERE ReservationCustomers.NFC_code = 9297324
+ORDER BY DoorAccessLog.Entry_time
 
 set statistics time off
 
