@@ -333,27 +333,6 @@ def reservation():
         return render_template("reservation.html")
 
     queryString = """
-    SELECT Customer_ID
-    FROM Customers
-    WHERE Customers.Issuing_authority = '{}'
-    """.format(IssuingAuthority)
-    rs.execute(queryString)
-    newCustomer_ID = rs.fetchall()
-
-    if(newCustomer_ID == []):
-        queryString = """
-        select max(Customers.Customer_ID)
-        from Customers
-        """
-        rs.execute(queryString)
-        newCustomer_ID = rs.fetchall()[0][0]+1
-    else:
-        newCustomer_ID = newCustomer_ID[0][0]
-
-    Reservation_maker_ID = newCustomer_ID
-    Customer_ID = newCustomer_ID
-
-    queryString = """
     INSERT INTO Customers
            (First_name
            ,Last_name
@@ -361,7 +340,7 @@ def reservation():
            ,Issuing_authority
            ,Email
            ,Phone)
-     VALUES
+    VALUES
            ('{}'
            ,'{}'
            ,'{}'
@@ -371,15 +350,23 @@ def reservation():
     """.format(First_name, Last_name, Birth_date, IssuingAuthority, Email, Phone)
     rs.execute(queryString)
     connection.commit()
+
+    queryString = """
+    SELECT max(Customer_ID)
+    FROM Customers
+    """
+    rs.execute(queryString)
+    newCustomer_ID = rs.fetchall()
+    newCustomer_ID = newCustomer_ID[0][0]
     
     queryString = """
-    INSERT INTO [dbo].[Reservations]
-            ([Arrival]
-            ,[Departure]
-            ,[Total_price]
-            ,[Payment_method]
-            ,[No_persons]
-            ,[Reservation_maker_ID])
+    INSERT INTO Reservations
+            (Arrival
+            ,Departure
+            ,Total_price
+            ,Payment_method
+            ,No_persons
+            ,Reservation_maker_ID)
         VALUES
             ('{}'
             ,'{}'
@@ -387,40 +374,42 @@ def reservation():
             ,'{}'
             ,'{}'
             ,'{}')
-    """.format(Arrival, Departure, Total_price, Payment_method, No_persons, Reservation_maker_ID)
+    """.format(Arrival, Departure, Total_price, Payment_method, No_persons, newCustomer_ID)
     rs.execute(queryString)
     connection.commit()
     
     queryString = """
-        select max(ReservationCustomers.Reservation_ID)
-        from ReservationCustomers
-        """
+    SELECT MAX(Reservation_ID)
+    FROM Reservations
+    """
     rs.execute(queryString) 
-    Reservation_ID = rs.fetchall()[0][0]+1
+    Reservation_ID = rs.fetchall()[0][0]
     NumberOfBeds = str(request.form.get("inputNumberOfBeds"))
     
-    queryString = """ SELECT max(ReservationRooms.HotelRoom_ID)
+    queryString = """ 
+    SELECT MAX(ReservationRooms.HotelRoom_ID)
     FROM ReservationRooms
     INNER JOIN HotelRooms ON HotelRooms.HotelRoom_ID = ReservationRooms.HotelRoom_ID
-    WHERE HotelRooms.No_beds = '{}'""".format(NumberOfBeds)
+    WHERE HotelRooms.No_beds = '{}'
+    """.format(NumberOfBeds)
     rs.execute(queryString)
     HotelRoom_ID = rs.fetchall()[0][0]+1
 
     queryString = """
     INSERT INTO ReservationRooms
-           ([Reservation_ID]
-           ,[HotelRoom_ID])
+           (Reservation_ID
+           ,HotelRoom_ID)
      VALUES
            ('{}',
            '{}')
-           """.format(Reservation_ID,HotelRoom_ID)
+    """.format(Reservation_ID, HotelRoom_ID)
     rs.execute(queryString)
     connection.commit()
 
     queryString = """
-        select max(ReservationCustomers.NFC_code)
-        from ReservationCustomers
-        """
+    SELECT MAX(ReservationCustomers.NFC_code)
+    from ReservationCustomers
+    """
     rs.execute(queryString) 
     NFC_code = rs.fetchall()[0][0]+1
 
@@ -433,7 +422,7 @@ def reservation():
            ('{}'
            ,'{}'
            ,'{}')
-    """.format(Customer_ID, Reservation_ID, NFC_code)
+    """.format(newCustomer_ID, Reservation_ID, NFC_code)
     rs.execute(queryString) 
     connection.commit()
     Sauna = str(request.form.get('Sauna'))
