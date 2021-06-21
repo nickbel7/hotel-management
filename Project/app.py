@@ -233,7 +233,7 @@ def dashboard():
     if (max_age != None and max_age != ''):
         max_age_query = 'AND ' + str(max_age) + ' ' + 'AND '
     else: 
-        max_age_query = 'AND 200 AND '
+        max_age_query = 'AND 30 AND '
     min_date = request.form.get('min_date')
     if (min_date != None and min_date != ''):
         min_date = datetime.strptime(min_date, '%Y-%m-%dT%H:%M')
