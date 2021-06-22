@@ -94,4 +94,4 @@ Find the questions for the queries attached to the file [Εκφωνήσεις](D
 
 ## YouTube
 Explaining in Greek language how to use our wep application and what queries are used in each page.<br />
-<https://www.youtube.com/watch?v=YaeIKbiKvYA&feature=youtu.be>
+<https://youtu.be/qY2IX3AB5gI>
