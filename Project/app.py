@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 sql_user = 'sa'
-sql_password = '2019'
+sql_password = '***'
 sql_server_name = 'BELLOS-DELL-G3\SQL2019'
 sql_database_name = 'HotelManagement'
 connection = pypyodbc.connect('Driver={SQL Server};Server='+sql_server_name+';Database='+sql_database_name+';uid='+sql_user+';pwd='+sql_password)
