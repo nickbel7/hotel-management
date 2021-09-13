@@ -1,5 +1,5 @@
 # Hotel-Management
-This is a project for the Databases class in NTUA Electrical and Computer Engineering Department (The project was graded with perfect score 100/100).
+This is a project for the Databases class in NTUA Electrical and Computer Engineering Department (The project was graded with perfect score 100/100)
 
 ## Contributors
 Listed alphabetically:
